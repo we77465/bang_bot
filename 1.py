@@ -25,5 +25,9 @@ async def on_member_remove(member):
     print('f{member}out')
     await channel.send('f{member}byeeee')
     
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f"!Hi <@{ctx.author.id}>")
 
-bot.run('MTEzNzk1MjQwNDY4NDQxNTAyNg.GoiyXs.7lkE-K6PxOiVTnr5kOcdOyirmhWgrR3IMQFbAg')
+
+bot.run('MTEzNzk1MjQwNDY4NDQxNTAyNg.GAQUHa.oSjlkE9lD8ikMMhFlmOgfwKB98vuzKDCQjHm-o')
