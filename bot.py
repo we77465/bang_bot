@@ -10,33 +10,26 @@ intents = discord.Intents.all()
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-#@bot.event
-#async def on_ready():
-#    print(">>Bot is online<<")
-#
-#@bot.event
-#async def on_member_join(member):
-#    channel = bot.get_channel(int(jdata["WELCOME"]))
-#    await channel.send(f'{member.name} hellooo')
-#
-#@bot.event
-#async def on_member_remove(member):
-#    channel = bot.get_channel(int(jdata["LEAVE"]))
-#    await channel.send(f'{member.name} byeeee')
+@bot.event
+async def on_ready():
+    print(">>Bot is online<<")
 
-for Filename in os.listdir('./cmds'):
-    if Filename.endswith('.py'):
-        bot.load_extension(f'cmds.{Filename[:-3]}')
+@bot.event
+async def on_member_join(member):
+    channel = bot.get_channel(int(jdata["WELCOME"]))
+    await channel.send(f'{member.name} hellooo')
+
+@bot.event
+async def on_member_remove(member):
+    channel = bot.get_channel(int(jdata["LEAVE"]))
+    await channel.send(f'{member.name} byeeee')
 
 
-if __name__=="__main__":
-    bot.run(jdata['TOKEN'])
-    
 import asyncio
 async def main():
     for filename in  os.listdir("./cmds"):
         if filename.endswith("py"):
             await bot.load_extension(f"cmds.{filename[:-3]}")
-    await bot.start(setups["token"])
+    await bot.start(jdata['TOKEN'])
 if __name__=="__main__":
     asyncio.run(main())
