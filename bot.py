@@ -3,6 +3,7 @@ from discord.ext import commands
 import json
 import random
 import os
+import asyncio
 
 with open('setting.json', 'r', encoding='utf-8') as jfile:
     jdata = json.load(jfile)
@@ -14,18 +15,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 async def on_ready():
     print(">>Bot is online<<")
 
-@bot.event
-async def on_member_join(member):
-    channel = bot.get_channel(int(jdata["WELCOME"]))
-    await channel.send(f'{member.name} hellooo')
 
-@bot.event
-async def on_member_remove(member):
-    channel = bot.get_channel(int(jdata["LEAVE"]))
-    await channel.send(f'{member.name} byeeee')
-
-
-import asyncio
 async def main():
     for filename in  os.listdir("./cmds"):
         if filename.endswith("py"):
