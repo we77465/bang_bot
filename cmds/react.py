@@ -29,16 +29,14 @@ class React(Cog_extension):
              }
          )
         json = response.json()
+        #await ctx.send(response.status_code)
         await ctx.send(json['choices'][0]['text'])
-
-
-
 
 
 
     @commands.command()
     async def hello(self,ctx):
-        await ctx.send(f"!Hi <@{ctx.author.id}>")
+        await ctx.send(f"Hi <@{ctx.author.id}>")
 
     @commands.command()
     async def 圖片(self,ctx):
