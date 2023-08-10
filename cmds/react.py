@@ -3,11 +3,37 @@ from discord.ext import commands
 from core.classes import Cog_extension
 import random
 import json
+import requests
+
+
 with open('setting.json', 'r', encoding='utf-8') as jfile:
     jdata = json.load(jfile)
 
 class React(Cog_extension):
    
+
+    @commands.command()
+    async def GPT(self,ctx,*,msg):
+        key = jdata["OpenAI_key"]
+        response = requests.post(
+             'https://api.openai.com/v1/completions',
+             headers = {
+                 'Content-Type': 'application/json',
+                 'Authorization': f'Bearer {key}'
+             },
+             json = {
+                 'model': 'text-davinci-003',
+                 'prompt': f'{msg}',
+                 'temperature': 0.4,
+                 'max_tokens': 300
+             }
+         )
+        json = response.json()
+        await ctx.send(json['choices'][0]['text'])
+
+
+
+
 
 
     @commands.command()
@@ -30,6 +56,6 @@ class React(Cog_extension):
         pic = jdata['url_pic']
         await ctx.send(pic)
 
-
+    
 async def setup(bot):
     await bot.add_cog(React(bot))

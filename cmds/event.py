@@ -21,7 +21,7 @@ class Events(Cog_extension):
 
     @commands.Cog.listener()
     async def on_message(self,msg):
-        if msg.content=='bang':
+        if msg.content=='bang' and msg.author!=self.bot.user:
             await msg.channel.send('banggg')
 
 async def setup(bot):
