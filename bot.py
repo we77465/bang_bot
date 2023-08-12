@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import json
-import random
 import os
 import asyncio
 
@@ -22,4 +21,6 @@ async def main():
             await bot.load_extension(f"cmds.{filename[:-3]}")
     await bot.start(jdata['TOKEN'])
 if __name__=="__main__":
+    
     asyncio.run(main())
+    
