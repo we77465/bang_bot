@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 from core.classes import Cog_extension
-import random
 import json
 import re
 import requests
@@ -22,16 +21,19 @@ class Events(Cog_extension):
         channel = self.bot.get_channel(int(jdata["LEAVE"]))
         await channel.send(f'{member.name} byeeee')
 
-    @commands.Cog.listener()
-    async def on_message(self,msg):
-        if msg.content=='bang' and msg.author!=self.bot.user:
-            await msg.channel.send('banggg')
+#    @commands.Cog.listener()
+#    async def on_message(self,msg):
+#        print(msg.content)
+#        if msg.content=='bang' and msg.author!=self.bot.user:
+#            await msg.channel.send('banggg')
 
 
     @commands.Cog.listener()
     async def on_message(self,msg):
         if msg.author == self.bot.user:
             return
+        if msg.content=='bang':
+            await msg.channel.send('banggg')
         url_pattern = re.compile(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
         if url_pattern.search(msg.content):
             await msg.channel.send(f'{msg.author.mention} 訊息包含 URL。')
