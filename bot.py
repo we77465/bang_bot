@@ -15,6 +15,36 @@ async def on_ready():
     print(">>Bot is online<<")
 
 
+#@bot.command()
+#async def load(ctx, cog_name):
+#	try:
+#		bot.load_extension(f'cogs.{cog_name}')
+#	except:
+#		await ctx.send('Failed.')
+#		return
+#	await ctx.send('load success!')
+#
+##這裡建個指令讓你可以卸載Cog
+#@bot.command()
+#async def unload(ctx, cog_name):
+#	try:
+#		bot.unload_extension(f'cogs.{cog_name}')
+#	except:
+#		await ctx.send('Failed.')
+#		return
+#	await ctx.send('unload success!')
+#
+##這裡建個指令讓你可以重新載入Cog
+#@bot.command()
+#async def reload(ctx, cog_name):
+#	try:
+#		bot.reload_extension(f'cogs.{cog_name}')
+#	except:
+#		await ctx.send('Failed.')
+#		return
+#	await ctx.send('reload success!')
+#
+
 async def main():
     for filename in  os.listdir("./cmds"):
         if filename.endswith("py"):

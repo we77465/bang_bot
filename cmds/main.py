@@ -31,6 +31,10 @@ class Main(Cog_extension):
         await ctx.message.delete()
         await ctx.send(msg)
 
+
+
+
+    
     @commands.command()
     async def online(self,ctx):
         all_online = []

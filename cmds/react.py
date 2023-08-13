@@ -37,6 +37,7 @@ class React(Cog_extension):
     @commands.command()
     async def hello(self,ctx):
         await ctx.send(f"Hi <@{ctx.author.id}>")
+        await ctx.send(ctx.author.name) #this is str
 
     @commands.command()
     async def 圖片(self,ctx):

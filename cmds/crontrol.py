@@ -9,22 +9,22 @@ class Control(Cog_extension):
 
 
     
-    @commands.command()
-    async def load(self,ctx,extension):
-        await self.bot.load_extension(f'cmds.{extension}')
-        await ctx.send(f'loading {extension} done')
-
-
-    @commands.command()
-    async def unload(self,ctx,extension):
-        await self.bot.unload_extension(f'cmds.{extension}')
-        await ctx.send(f'unloading {extension} done')
-
-
-    @commands.command()
-    async def reload(self,ctx,extension):
-        await self.bot.reload_extension(f'cmds.{extension}')
-        await ctx.send(f'reloading {extension} done')
+#    @commands.command()
+#    async def load(self,ctx,extension):
+#        await self.bot.load_extension(f'cmds.{extension}')
+#        await ctx.send(f'loading {extension} done')
+#
+#
+#    @commands.command()
+#    async def unload(self,ctx,extension):
+#        await self.bot.unload_extension(f'cmds.{extension}')
+#        await ctx.send(f'unloading {extension} done')
+#
+#
+#    @commands.command()
+#    async def reload(self,ctx,extension):
+#        await self.bot.reload_extension(f'cmds.{extension}')
+#        await ctx.send(f'reloading {extension} done')
 
 
 async def setup(bot):
