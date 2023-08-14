@@ -24,7 +24,7 @@ class MyCog(Cog_extension):
         }
         self.connection = pymysql.connect(**self.db_config)
         self.currentuser = "worstking99"
-        self.min = -1
+        self.five_min = -1
 
 
     @commands.command()
@@ -47,12 +47,11 @@ class MyCog(Cog_extension):
     @tasks.loop(seconds=1.0)  # 每一秒執行 如果在分%5==0的時候 send東西 
     async def printer(self):
         now = datetime.datetime.now()
-        if now.minute % 5 == 6 or now.second == 0 or now.second == 30:  # At exact 5th, 10th, 15th, ... minute
+        if now.minute % 5 == 6 or now.second == 0:  # At exact 5th, 10th, 15th, ... minute
             
-            print(self.index)
             if self.index == 0:
                 await self.send_message()
-            await self.channel.send(f"現在時間{now.hour}點{now.minute}分")
+            await self.channel.send(f"現在時間{now.hour}點{now.minute}分{now.second}秒")
             self.index += 1
 
             with self.connection.cursor() as cursor:
@@ -65,17 +64,15 @@ class MyCog(Cog_extension):
 
                 # 輸出擷取的記錄
                 for record in records:
-                    #if(record['month'])
-                    await self.channel.send(record)
-                    await self.channel.send(f"name: {str(record[1])}")
-                    await self.channel.send(f"year:{str( record[2])}")
-                    await self.channel.send(f"month:{str( record[3])}")
-                    await self.channel.send(f"day:{str( record[4])}")
-                    #print("Name:", record['name'])
-                    #
-                    #print("Month:", type(record['month']))
-                    #print("Day:", record['day'])
-                
+                    hours = int(record[5])
+                    mins = int(record[6])
+                    self.five_min = hours*60+mins
+                    #await self.channel.send(self.five_min - (now.hour*60+now.minute))
+                    if self.five_min - (now.hour*60+now.minute) ==5  :
+                        await self.channel.send(record)
+                        await self.channel.send("這個的時間再5分鐘就要到了哦")
+                        self.five_min = -1
+
             
 
     async def send_message(self):
