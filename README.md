@@ -14,7 +14,7 @@
 |:----------- | -------- |
 | clean       |    清除      |
 | em          |    顯示我的東C      |
-| online      |    查看上限人員      |
+| online      |    查看上線人員      |
 | ping        |    查看ping      |
 | said        |    叫機器人說東西      |
 | add_note    |    新增note      |
