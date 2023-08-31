@@ -5,7 +5,7 @@
     "google_api_key" : "AIzaSyBrCzeBxhTATOArZ8aQPae_o9mjjqchCME",
     "google_api_url" : "https://safebrowsing.googleapis.com/v4/threatMatches:find",
     "host": "localhost",
-    "OpenAI_key" : "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",
+    "OpenAI_key" : "",
     "user" : "root",
     "database": "0811_py",
     "pic" : ["C:\\Users\\kenan\\Desktop\\school\\bang_bot\\bang_bot\\pic\\下載.png","C:\\Users\\kenan\\Desktop\\school\\bang_bot\\bang_bot\\pic\\多种顏色-數字-美工_csp3993822.jpg"],
